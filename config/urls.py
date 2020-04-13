@@ -4,13 +4,20 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
 
-from modain.users.views import Indice
-from modain.users.views import test
+from modain.users.views import Indice, ListadoProducto, DetalleProducto, ComentarioProducto, Ingresar, Salir, CambiarPerfil
 
 urlpatterns = [
 
-    path("", Indice.as_view()),
-    path("test/", test.as_view()),
+    path("", Indice.as_view(), name="index"),
+    #path("test/", test.as_view()),
+    #path("listado_productos/", ListadoProducto.as_view(), name="test_listado"),
+    path("listado_productos/", ListadoProducto.as_view(), name="listado_productos"),
+    path("detalle_producto/<int:pk>", DetalleProducto.as_view(), name="detalle_productos"),
+    path("crear_comentario/", ComentarioProducto.as_view(), name="crear_comentario"),
+    path('ingresar/', Ingresar.as_view(), name="ingresar"),
+    path('salir/', Salir.as_view(), name="salir"),
+    path('cambiar_perfil/', CambiarPerfil.as_view(), name="cambiar_perfil"),
+
     # Django Admin, use {% raw %}{% url 'admin:index' %}{% endraw %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
