@@ -23,7 +23,7 @@ RUN addgroup --system django \
  #   && rm -rf /requirements
 
 #COPY ./compose/production/django/entrypoint /entrypoint
-RUN sed -i 's/\r$//g' /entrypoint
+#RUN sed -i 's/\r$//g' /entrypoint
 RUN chmod +x /entrypoint
 RUN chown django /entrypoint
 
