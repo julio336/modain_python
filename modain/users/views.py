@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView, TemplateView, ListView, CreateView
 from django.contrib.auth.views import LoginView, LogoutView
-from modain.products.models import Product, Comment
+from modain.products.models import Product, Comment, ShoppingCart
 from django.db.models import Q, Max, Min
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
@@ -23,7 +23,7 @@ class test(TemplateView):
 class ListadoProducto(ListView):
     template_name = 'listado_productos.html'
     model = Product
-    paginate_by = 10
+    paginate_by = 1
 
     def get_queryset(self):
         query = None
@@ -103,3 +103,9 @@ class CambiarPerfil(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
+class AddCart(LoginRequiredMixin, CreateView):
+    model = ShoppingCart
+    fields = ('usuario', 'producto', 'precio')
+    success_url = reverse_lazy('index')
+    login_url = 'ingresar'

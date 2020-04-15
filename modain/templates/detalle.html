@@ -76,12 +76,20 @@
 
     </div>
 
-    <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red pulse">
-            <i class="large material-icons">add_shopping_cart</i>
-        </a>
+    <div class="fixed-action-btn" style="bottom: 90px;">
+        <form action="{% url 'add_cart' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="usuario" value="{{request.user.pk}}">
+            <input type="hidden" name="producto" value="{{object.pk}}">
+            <input type="hidden" name="precio" value="{{object.precio}}">
+
+            <button class="btn-floating btn-large red pulse">
+                <i class="large material-icons">add_shopping_cart</i>
+            </button>
+        </form>
         <ul>
         </ul>
+       
     </div>
     
 {% endblock contenido %}
