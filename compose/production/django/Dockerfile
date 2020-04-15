@@ -22,7 +22,7 @@ RUN addgroup --system django \
 #RUN pip install --no-cache-dir -r /requirements/production.txt \
  #   && rm -rf /requirements
 
-COPY ./compose/production/django/entrypoint /entrypoint
+#COPY ./compose/production/django/entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint
 RUN chmod +x /entrypoint
 RUN chown django /entrypoint
