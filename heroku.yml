@@ -1,6 +1,6 @@
 build:
   docker:
-    web: compose/production/django/Dockerfile
+    web: /compose/production/django/Dockerfile
 run:
   web: bundle exec puma -C config/puma.rb
 
