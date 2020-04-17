@@ -15,6 +15,4 @@ release:
     - ./deployment-tasks.sh
 run:
   web: bundle exec puma -C config/puma.rb
-  asset-syncer:
-    command:
-      - python asset-syncer.py
+  
