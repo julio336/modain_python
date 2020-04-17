@@ -4,14 +4,12 @@ setup:
       as: DATABASE
   config:
     S3_BUCKET: my-example-bucket
-build:
+bbuild:
   docker:
     web: Dockerfile
-  config:
-    RAILS_ENV: development
-    FOO: bar
+    worker: worker/Dockerfile
 release:
-  image: web
+  image: worker
   command:
     - ./deployment-tasks.sh
 run:
