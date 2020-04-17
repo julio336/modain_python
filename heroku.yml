@@ -4,7 +4,7 @@ setup:
       as: DATABASE
   config:
     S3_BUCKET: my-example-bucket
-bbuild:
+build:
   docker:
     web: Dockerfile
     worker: worker/Dockerfile
